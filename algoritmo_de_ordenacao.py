@@ -82,6 +82,8 @@ def executar_experimento(cenario, algoritmo, tamanho, num_execucoes=10):
         tempo_total += tempo_fim - tempo_inicio
     return tempo_total / num_execucoes
 
+### REPETIR 1 VEZ ###
+""" 
 tamanho = 100000
 
 algoritmos = [merge_sort, quick_sort, bubble_sort, insertion_sort, selection_sort]
@@ -94,3 +96,19 @@ for cenario in cenarios:
         tempo_medio = executar_experimento(cenario, algoritmo, tamanho)
         print(f"{algoritmo.__name__}: {tempo_medio:.6f} segundos")
     print()
+"""
+### REPETIR 10 VEZES ###
+tamanho = 100000
+num_execucoes = 10
+
+algoritmos = [merge_sort, quick_sort, bubble_sort, insertion_sort, selection_sort]
+cenarios = ["aleatorio", "decrescente", "crescente"]
+
+for _ in range(10):
+    print(f"Cenario {_ + 1}")
+    for cenario in cenarios:
+        print(f"Cenario: {cenario}")
+        for algoritmo in algoritmos:
+            tempo_medio = executar_experimento(cenario, algoritmo, tamanho, num_execucoes)
+            print(f"{algoritmo.__name__}: {tempo_medio:.6f} segundos")
+        print()
